@@ -6,6 +6,7 @@ import AddRestaurantPage from "./pages/AddRestaurantPage";
 import { Selector } from "./pages/Selector";
 import RestaurantsPage from "./pages/RestaurantsPage";
 import { getRestaurants } from "./utilities";
+import RestaurantDetails from "./pages/RestaurantDetails";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -24,6 +25,10 @@ const router = createBrowserRouter([{
             path: '/restaurants',
             element: <RestaurantsPage/>,
             loader: getRestaurants
+        },
+        {
+            path: '/restaurants/:id',
+            element: <RestaurantDetails/>
         },
         {
             path: '/selector',

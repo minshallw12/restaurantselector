@@ -15,9 +15,9 @@ export default function AddRestaurantPage(){
                 event.preventDefault(),
                 postNewRestaurant(name, type1, type2, cost),
                 setName(""),
-                setType1(""),
-                setType2(""),
-                setCost(1),
+                setType1("Fast Food"),
+                setType2("Fast Food"),
+                setCost("$"),
             ]} className="center-column lg-padding-children">
                 <label htmlFor="name">Restaurant Name:</label>
                     <input type="text" name="name" onChange={(event)=>setName(event.target.value)}/>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view
 from .models import *
+import json
 
 # Create your views here.
 def index(request):
@@ -31,3 +32,24 @@ def get_restaurants(request):
         return JsonResponse({'restaurants': restaurants})
     except Exception as e:
         print(e, "Failed to get restaurants list")
+
+# This function serializes the data to return an object
+class CustomeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Restaurants):
+            return {
+                "name": obj.name, 
+                "type1": obj.type1, 
+                "type2": obj.type2, 
+                "cost": obj.cost
+            }
+        return super().default(obj)
+
+@api_view(['GET'])
+def get_restaurant_details(request, id):
+    try:
+        restaurant = Restaurants.objects.get(id = id)
+        json_data = json.dumps(restaurant, cls=CustomeEncoder)
+        return JsonResponse({'data': json_data,'id':id})
+    except Exception as e:
+        print(e, "Failed to get restaurant details")

@@ -3,7 +3,7 @@ import axios from 'axios';
 // Create
 
 // This funciton posts a new restaurant to the database.
-export const postNewRestaurant = async(name:string, type1:string, type2:string, cost:BigInteger) => {
+export const postNewRestaurant = async(name:string, type1:string, type2:string, cost:string) => {
     try {
         const response = await axios.post('/addRestaurant/', {
             'name': name,
@@ -28,5 +28,16 @@ export const getRestaurants = async() => {
         return response.data
     } catch (error) {
         console.error(error, "Failed to get list of restaurants")
+    }
+}
+
+// This api call collects specific restaurnat data.
+export const getRestaurantDetails = async(id:string) => {
+    try {
+        const response = await axios.get(`/restaurants/${id}`)
+        console.log(response)
+        return response.data
+    } catch (error) {
+        console.error(error, "Failed to get restaurant details")
     }
 }

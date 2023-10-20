@@ -7,5 +7,6 @@ urlpatterns = [
     path('restaurants/', views.index, name="restaurants"),
     path('addRestaurant/', views.add_restaurant, name="add_restaurant"),
     path('getRestaurants/', views.get_restaurants, name="get_restaurants"),
+    path('restaurants/<int:id>', views.get_restaurant_details, name="get_restaurants"),
     path('selector/', views.index, name='selector'),
 ]

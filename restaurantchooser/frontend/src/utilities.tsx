@@ -5,7 +5,7 @@ import axios from 'axios';
 // This funciton posts a new restaurant to the database.
 export const postNewRestaurant = async(name:string, type1:string, type2:string, cost:BigInteger) => {
     try {
-        const response = await axios.post('/addRestaurant', {
+        const response = await axios.post('/addRestaurant/', {
             'name': name,
             'type1': type1,
             'type2': type2,

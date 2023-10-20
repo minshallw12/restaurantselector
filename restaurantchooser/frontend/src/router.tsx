@@ -15,7 +15,7 @@ const router = createBrowserRouter([{
             element: <WelcomePage/>
         },
         {
-            path: '/addrestaurant',
+            path: '/restaurantForm',
             element: <AddRestaurantPage/>
         },
         {

@@ -1,0 +1,21 @@
+.center-row {
+    display: flex;
+    justify-content: center;
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sm-padding {
+    padding: 5px;
+}
+.md-padding {
+    padding: 10px;
+}
+
+.lg-padding-children > *, .lg-padding {
+    padding: 15px;
+}

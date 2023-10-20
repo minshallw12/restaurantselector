@@ -18,3 +18,15 @@ export const postNewRestaurant = async(name:string, type1:string, type2:string, 
         console.error(error, "Post unsuccessful. Please try again");
     };
 };
+
+// Read
+
+// This function loads all the restaurants in the database.
+export const getRestaurants = async() => {
+    try {
+        const response = await axios.get("/getRestaurants/")
+        return response.data
+    } catch (error) {
+        console.error(error, "Failed to get list of restaurants")
+    }
+}

@@ -21,5 +21,13 @@ def add_restaurant(request):
         new_restaurant.save()
         return JsonResponse({"success":True})
     except Exception as e:
-        print(e)
+        print(e, "Failed to post new restaurant")
         return JsonResponse({"success": False})
+    
+@api_view(['GET'])
+def get_restaurants(request):
+    try:
+        restaurants = list(Restaurants.objects.all().values())
+        return JsonResponse({'restaurants': restaurants})
+    except Exception as e:
+        print(e, "Failed to get restaurants list")

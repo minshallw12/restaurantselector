@@ -4,6 +4,8 @@ import WelcomePage from "./pages/WelcomePage";
 import Error from "./pages/Error";
 import AddRestaurantPage from "./pages/AddRestaurantPage";
 import { Selector } from "./pages/Selector";
+import RestaurantsPage from "./pages/RestaurantsPage";
+import { getRestaurants } from "./utilities";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -17,6 +19,11 @@ const router = createBrowserRouter([{
         {
             path: '/restaurantForm',
             element: <AddRestaurantPage/>
+        },
+        {
+            path: '/restaurants',
+            element: <RestaurantsPage/>,
+            loader: getRestaurants
         },
         {
             path: '/selector',

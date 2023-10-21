@@ -32,11 +32,11 @@ export const getRestaurants = async() => {
 }
 
 // This api call collects specific restaurnat data.
-export const getRestaurantDetails = async(id:string) => {
+export const getRestaurantDetails = async(id: any) => {
     try {
-        const response = await axios.get(`/restaurants/${id}`)
-        console.log(response)
-        return response.data
+        const response = await axios.get(`/restaurants/${id.params.id}`)
+        console.log(response.data.data)
+        return response.data.data
     } catch (error) {
         console.error(error, "Failed to get restaurant details")
     }

@@ -34,7 +34,7 @@ def get_restaurants(request):
         print(e, "Failed to get restaurants list")
 
 # This function serializes the data to return an object
-class CustomeEncoder(json.JSONEncoder):
+class CustomEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Restaurants):
             return {
@@ -49,7 +49,9 @@ class CustomeEncoder(json.JSONEncoder):
 def get_restaurant_details(request, id):
     try:
         restaurant = Restaurants.objects.get(id = id)
-        json_data = json.dumps(restaurant, cls=CustomeEncoder)
-        return JsonResponse({'data': json_data,'id':id})
+        print(restaurant, "I'm here")
+        json_data = json.dumps(restaurant, cls=CustomEncoder)
+        print(json_data, "here")
+        return JsonResponse({"data":json_data}, safe=False)
     except Exception as e:
         print(e, "Failed to get restaurant details")

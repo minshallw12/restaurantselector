@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { postNewRestaurant } from "../utilities";
-
+import { Link } from "react-router-dom";
 
 export default function AddRestaurantPage(){
     const [name, setName] = useState("")
@@ -11,6 +11,7 @@ export default function AddRestaurantPage(){
     return (
         <div>
             <h2>New restaurant?</h2>
+            <h4><Link to="/">{"<"}- Back to Home</Link></h4>
             <form onSubmit={(event)=> [
                 event.preventDefault(),
                 postNewRestaurant(name, type1, type2, cost),
@@ -60,4 +61,4 @@ export default function AddRestaurantPage(){
             </form>
         </div>
     )
-}
+};

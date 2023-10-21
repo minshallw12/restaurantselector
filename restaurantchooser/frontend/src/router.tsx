@@ -5,7 +5,7 @@ import Error from "./pages/Error";
 import AddRestaurantPage from "./pages/AddRestaurantPage";
 import { Selector } from "./pages/Selector";
 import RestaurantsPage from "./pages/RestaurantsPage";
-import { getRestaurants } from "./utilities";
+import { getRestaurantDetails, getRestaurants } from "./utilities";
 import RestaurantDetails from "./pages/RestaurantDetails";
 
 const router = createBrowserRouter([{
@@ -28,7 +28,8 @@ const router = createBrowserRouter([{
         },
         {
             path: '/restaurants/:id',
-            element: <RestaurantDetails/>
+            element: <RestaurantDetails/>,
+            loader: getRestaurantDetails
         },
         {
             path: '/selector',

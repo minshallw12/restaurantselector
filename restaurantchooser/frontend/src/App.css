@@ -1,3 +1,7 @@
+.column {
+    display: flex;
+    flex-direction: column;
+}
 .center-row {
     display: flex;
     justify-content: center;
@@ -9,10 +13,10 @@
     align-items: center;
 }
 
-.sm-padding {
+.sm-padding-children > *, .sm-padding  {
     padding: 5px;
 }
-.md-padding {
+.md-padding-children > *, .md-padding  {
     padding: 10px;
 }
 

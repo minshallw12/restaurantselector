@@ -40,4 +40,16 @@ export const getRestaurantDetails = async(id: any) => {
     } catch (error) {
         console.error(error, "Failed to get restaurant details")
     }
-}
+};
+
+// Delete
+// This utiltity deletes a restaurant from the database.
+export const deleteRestaurant = async(id:number | string) => {
+    try {
+        const response = await axios.delete(`/delete/${id}`)
+        console.log(response.data.success, "Delete successful")
+        return response.data.success
+    } catch (error) {
+        console.error(error, "Failed to delete this entry")
+    }
+};

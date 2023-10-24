@@ -55,3 +55,12 @@ def get_restaurant_details(request, id):
         return JsonResponse({"data":json_data}, safe=False)
     except Exception as e:
         print(e, "Failed to get restaurant details")
+
+@api_view(['DELETE'])
+def delete_restaurant(request, id):
+    try:
+        Restaurants.objects.filter(id=id).delete()
+        return JsonResponse({'success':True})
+    except Exception as e:
+        print(e)
+        return JsonResponse({'sucess':False})

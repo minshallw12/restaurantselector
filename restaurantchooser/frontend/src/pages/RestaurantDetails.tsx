@@ -1,18 +1,18 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { deleteRestaurant } from "../utilities";
 
 
 export default function RestaurantDetails() {
+    const navigate = useNavigate()
     const restaurantDetails:any = useLoaderData()
     const param = useParams()
-    console.log(param.id)
     const my_data = JSON.parse(restaurantDetails)
-    console.log(my_data, "Me!")
 
     const handleDelete = async() => {
         if (param.id) {
-            await deleteRestaurant(+param.id);
+            await deleteRestaurant(+param.id)
+            navigate("/restaurants")
         }
     };
 
@@ -41,9 +41,9 @@ export default function RestaurantDetails() {
             </div>
             
             
-            <h4><Link to="/">{"<"}- Back to Home</Link></h4>
+            <h4><Link to={"/"}>{"<"}- Back to Home</Link></h4>
             <div>
-                <Link to={'/delete'}><button onClick={handleDelete}>Delete </button></Link>
+                <Link to={'/restaurants'}><button onClick={handleDelete}>Delete </button></Link>
             </div>
         </div>
     )

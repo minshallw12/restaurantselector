@@ -32,14 +32,14 @@ const router = createBrowserRouter([{
             element: <RestaurantDetails/>,
             loader: getRestaurantDetails
         },
-        {
-            path: '/selector',
-            element: <Selector/>
-        },
-        {
-            path: '/deleterestaurant',
-            element: <DeleteSuccessful/>
-        }
+        // {
+        //     path: '/selector',
+        //     element: <Selector/>
+        // },
+        // {
+        //     path: '/deleterestaurant',
+        //     element: <DeleteSuccessful/>
+        // }
     ]
 }])
 

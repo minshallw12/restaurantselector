@@ -1,24 +1,27 @@
 import { useState } from "react";
 import { postNewRestaurant } from "../utilities";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AddRestaurantPage(){
     const [name, setName] = useState("")
     const [type1, setType1] = useState("Fast Food")
     const [type2, setType2] = useState("Fast Food")
     const [cost, setCost] = useState("$")
+    const navigate = useNavigate()
 
     return (
         <div>
             <h2>New restaurant?</h2>
             <h4><Link to="/">{"<"}- Back to Home</Link></h4>
-            <form onSubmit={(event)=> [
+            <form onSubmit={async (event)=> [
                 event.preventDefault(),
-                postNewRestaurant(name, type1, type2, cost),
+                await postNewRestaurant(name, type1, type2, cost),
                 setName(""),
                 setType1("Fast Food"),
                 setType2("Fast Food"),
                 setCost("$"),
+                navigate("/restaurants")
             ]} className="center-column lg-padding-children">
                 <label htmlFor="name">Restaurant Name:</label>
                     <input type="text" name="name" onChange={(event)=>setName(event.target.value)}/>
@@ -58,6 +61,7 @@ export default function AddRestaurantPage(){
                         <option value="$$$$">$$$$</option>
                     </select>
                 <button type="submit">Submit</button>
+                {/* <Link to={"/restaurants"}><button type="submit">Submit</button></Link> */}
             </form>
         </div>
     )

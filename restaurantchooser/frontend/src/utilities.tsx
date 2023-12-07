@@ -42,6 +42,13 @@ export const getRestaurantDetails = async(id: any) => {
     }
 };
 
+// Get filtered results using choices
+export const getFilteredList = async(choice1:string, choice2:string) => {
+    const response = await axios.get(`/${choice1}/${choice2}`)
+    console.log(response.data, "UTILITIES")
+    return response.data
+}
+
 // Delete
 // This utiltity deletes a restaurant from the database.
 export const deleteRestaurant = async(id:number | string) => {

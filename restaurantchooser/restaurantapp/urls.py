@@ -10,5 +10,5 @@ urlpatterns = [
     path('getRestaurants/', views.get_restaurants, name="get_restaurants"),
     path('restaurants/<int:id>', views.get_restaurant_details, name="get_restaurants"),
     path('delete/<int:id>',views.delete_restaurant, name="delete_restaurant"),
-    path('selector/', views.index, name='selector'),
+    path('filtered_list/', views.get_filtered_restaurants, name='selector'),
 ]

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.db.models import Q
+from django.forms.models import model_to_dict
 from rest_framework.decorators import api_view
 from .models import *
 import json
@@ -55,6 +57,29 @@ def get_restaurant_details(request, id):
         return JsonResponse({"data":json_data}, safe=False)
     except Exception as e:
         print(e, "Failed to get restaurant details")
+
+
+@api_view(['GET'])
+def get_filtered_restaurants(request):
+    choice1 = request.data["choice1"]
+    choice2 = request.data["choice2"]
+    type1_list = Restaurants.objects.filter(Q(type1 = choice1) | Q(type1 = choice2))
+    type2_list = Restaurants.objects.filter(Q(type2 = choice1) | Q(type2 = choice2))
+
+    big_list = []
+    for item in type1_list:
+        data = model_to_dict(item)
+        big_list.append(tuple(data.items()))
+    for item in type2_list:
+        data = model_to_dict(item)
+        big_list.append(tuple(data.items()))
+
+    print(big_list)
+  
+    final_list = [dict(item) for item in set(big_list)]
+    # print(final_list)
+
+    return JsonResponse({"restaurants": final_list})
 
 @api_view(['DELETE'])
 def delete_restaurant(request, id):

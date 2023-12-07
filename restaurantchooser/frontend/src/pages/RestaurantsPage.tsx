@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -10,8 +11,10 @@ interface restaurant {
 }
 
 export default function RestaurantsPage() {
+    
     const restaurant_objects: any = useLoaderData()
     console.log(restaurant_objects.restaurants)
+
 
     return (
         <div>
@@ -43,7 +46,7 @@ export default function RestaurantsPage() {
             </div>
             
             
-            <h4><Link to="/">{"<"}- Back to Home</Link></h4>
+            <h4><Link to={"/"}>{"<"}- Back to Home</Link></h4>
             
         </div>
     )

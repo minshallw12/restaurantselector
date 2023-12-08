@@ -34,7 +34,11 @@ export default function RestaurantDetails() {
                         <td>{my_data.type2} </td>
                     </tr>
                     <tr className="sm-padding-children">
-                        <th>Second Type: </th>
+                        <th>Tertiary Type: </th>
+                        <td>{my_data.type3} </td>
+                    </tr>
+                    <tr className="sm-padding-children">
+                        <th>Cost: </th>
                         <td>{my_data.cost} </td>
                     </tr>
                 </table>

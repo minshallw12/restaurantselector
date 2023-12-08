@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Selector } from "./Selector"
+import { Selector } from "../components/Selector"
 
 export default function WelcomePage(){
 

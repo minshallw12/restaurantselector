@@ -1,23 +1,11 @@
-import { useState } from "react"
 
-export function Selector() {
 
-    const [choice1, setChoice1] = useState("Fast Food")
-    const [choice2, setChoice2] = useState("Fast Food")
-
-    const handleSubmit = (e:any) => {
-        e.preventDefault()
-        console.log('button pressed')
-        
-    }
-
+export default function EditRestaurantForm() {
     return (
-        <div>
-            <h2>What do you want to eat?</h2>
-
-            <form className="center-column sm-padding-children" onSubmit={handleSubmit}>
-                <label htmlFor="choose1">Eater 1</label>
-                <select name="choose1" id="choose1" onChange={(event) => setChoice1(event.target.value)}>
+        <div className="EditRestaurantForm">
+            <form>
+            <label htmlFor="edit1">Type 1</label>
+                <select name="edit1" id="edit1">
                     <option value="Fast Food">Fast Food</option>
                     <option value="Breakfast">Breakfast</option>
                     <option value="Fine Dining">Fine Dining</option>
@@ -25,13 +13,11 @@ export function Selector() {
                     <option value="Seafood">Seafood</option>
                     <option value="American">American</option>
                     <option value="Barbeque">Barbeque</option>
-                    <option value="Deli">Deli/Sandwiches</option>
-                    <option value="Bakery">Bakery</option>
                     <option value="Grocery">Grocery</option>
                     <option value="Ethnic">Ethnic</option>
                 </select>
-                <label htmlFor="choose2">Eater 2</label>
-                <select name="choose2" id="choose2" onChange={(event) => setChoice2(event.target.value)}>
+                <label htmlFor="edit2">Type 2</label>
+                <select name="edit2" id="edit2">
                     <option value="Fast Food">Fast Food</option>
                     <option value="Breakfast">Breakfast</option>
                     <option value="Fine Dining">Fine Dining</option>
@@ -39,12 +25,23 @@ export function Selector() {
                     <option value="Seafood">Seafood</option>
                     <option value="American">American</option>
                     <option value="Barbeque">Barbeque</option>
-                    <option value="Deli">Deli/Sandwiches</option>
-                    <option value="Bakery">Bakery</option>
                     <option value="Grocery">Grocery</option>
                     <option value="Ethnic">Ethnic</option>
                 </select>
-                <button type="submit">Generate List</button>
+                <label htmlFor="edit3">Type 2</label>
+                <select name="edit3" id="edit3">
+                    <option value="Burgers">Burgers</option>
+                    <option value="Coffee">Coffee</option>
+                    <option value="Wine Bar">Wine Bar</option>
+                    <option value="Brewery">Brewery</option>
+                    <option value="Pizza">Pizza</option>
+                    <option value="Barbeque">Barbeque</option>
+                    <option value="Deli">Deli/Sandwiches</option>
+                    <option value="Bakery">Bakery</option>
+                    <option value="Convenience">Convenience</option>
+                    <option value="Asian">Asian</option>
+                    <option value="Mexican">Mexican</option>
+                </select>
             </form>
         </div>
     )

@@ -3,11 +3,9 @@ import App from "./App";
 import WelcomePage from "./pages/WelcomePage";
 import Error from "./pages/Error";
 import AddRestaurantPage from "./pages/AddRestaurantPage";
-import { Selector } from "./pages/Selector";
 import RestaurantsPage from "./pages/RestaurantsPage";
 import { getRestaurantDetails, getRestaurants } from "./utilities";
 import RestaurantDetails from "./pages/RestaurantDetails";
-import DeleteSuccessful from "./pages/DeleteSuccessful";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -32,14 +30,6 @@ const router = createBrowserRouter([{
             element: <RestaurantDetails/>,
             loader: getRestaurantDetails
         },
-        // {
-        //     path: '/selector',
-        //     element: <Selector/>
-        // },
-        // {
-        //     path: '/deleterestaurant',
-        //     element: <DeleteSuccessful/>
-        // }
     ]
 }])
 

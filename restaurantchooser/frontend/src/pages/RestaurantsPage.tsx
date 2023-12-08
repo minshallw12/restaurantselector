@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -7,6 +6,7 @@ interface restaurant {
     name: string,
     type1: string,
     type2: string,
+    type3: string,
     cost: string
 }
 
@@ -14,7 +14,6 @@ export default function RestaurantsPage() {
     
     const restaurant_objects: any = useLoaderData()
     console.log(restaurant_objects.restaurants)
-
 
     return (
         <div>
@@ -26,16 +25,18 @@ export default function RestaurantsPage() {
                         <th>Name</th>
                         <th>Type 1</th>
                         <th>Type 2</th>
+                        <th>Type 3</th>
                         <th>Cost</th>
                     </tr>
                     
                         {
-                            restaurant_objects.restaurants.map(({id, name, type1, type2, cost}: restaurant) => (
+                            restaurant_objects.restaurants.map(({id, name, type1, type2, type3, cost}: restaurant) => (
                                 <tr>
                                     <td>{id}</td>
                                     <Link to={`/restaurants/${id}`}><td>{name}</td></Link>
-                                    <td>{type1} </td>
+                                    <td>{type1}</td>
                                     <td>{type2}</td>
+                                    <td>{type3}</td>
                                     <td>{cost}</td>
                                 </tr>
                                     

@@ -15,12 +15,13 @@ def add_restaurant(request):
     name = request.data['name']
     type1 = request.data['type1']
     type2 = request.data['type2']
+    type3 = request.data['type3']
     cost = request.data['cost']
     print(name,type1,type2,cost)
     
     try:
         # creates new restaurant
-        new_restaurant = Restaurants.objects.create(name=name, type1=type1, type2=type2, cost=cost)
+        new_restaurant = Restaurants.objects.create(name=name, type1=type1, type2=type2, type3=type3, cost=cost)
         new_restaurant.save()
         return JsonResponse({"success":True})
     except Exception as e:
@@ -42,7 +43,8 @@ class CustomEncoder(json.JSONEncoder):
             return {
                 "name": obj.name, 
                 "type1": obj.type1, 
-                "type2": obj.type2, 
+                "type2": obj.type2,
+                "type3": obj.type3, 
                 "cost": obj.cost
             }
         return super().default(obj)
@@ -60,26 +62,25 @@ def get_restaurant_details(request, id):
 
 
 @api_view(['GET'])
-def get_filtered_restaurants(request):
-    choice1 = request.data["choice1"]
-    choice2 = request.data["choice2"]
-    type1_list = Restaurants.objects.filter(Q(type1 = choice1) | Q(type1 = choice2))
-    type2_list = Restaurants.objects.filter(Q(type2 = choice1) | Q(type2 = choice2))
-
-    big_list = []
-    for item in type1_list:
-        data = model_to_dict(item)
-        big_list.append(tuple(data.items()))
-    for item in type2_list:
-        data = model_to_dict(item)
-        big_list.append(tuple(data.items()))
-
-    print(big_list)
-  
-    final_list = [dict(item) for item in set(big_list)]
-    # print(final_list)
-
-    return JsonResponse({"restaurants": final_list})
+def get_filtered_restaurants(request, choice1, choice2):
+    try:
+        type1_list = Restaurants.objects.filter(Q(type1 = choice1) | Q(type1 = choice2))
+        type2_list = Restaurants.objects.filter(Q(type2 = choice1) | Q(type2 = choice2))
+        type3_list = Restaurants.objects.filter(Q(type3 = choice1) | Q(type3 = choice2))
+        big_list = []
+        for item in type1_list:
+            data = model_to_dict(item)
+            big_list.append(tuple(data.items()))
+        for item in type2_list:
+            data = model_to_dict(item)
+            big_list.append(tuple(data.items()))
+        for item in type3_list:
+            data = model_to_dict(item)
+            big_list.append(tuple(data.items()))
+        final_list = [dict(item) for item in set(big_list)]
+        return JsonResponse({"restaurants": final_list})
+    except Exception as e:
+        print(e, "Failed to get filtered list")
 
 @api_view(['DELETE'])
 def delete_restaurant(request, id):

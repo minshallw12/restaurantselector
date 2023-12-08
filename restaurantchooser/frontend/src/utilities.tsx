@@ -3,12 +3,13 @@ import axios from 'axios';
 // Create
 
 // This funciton posts a new restaurant to the database.
-export const postNewRestaurant = async(name:string, type1:string, type2:string, cost:string) => {
+export const postNewRestaurant = async(name:string, type1:string, type2:string, type3:string, cost:string) => {
     try {
         const response = await axios.post('/addRestaurant/', {
             'name': name,
             'type1': type1,
             'type2': type2,
+            'type3': type3,
             'cost': cost,
         })
         console.log(response.data.success, "Post successful!");
@@ -44,9 +45,14 @@ export const getRestaurantDetails = async(id: any) => {
 
 // Get filtered results using choices
 export const getFilteredList = async(choice1:string, choice2:string) => {
-    const response = await axios.get(`/${choice1}/${choice2}`)
-    console.log(response.data, "UTILITIES")
-    return response.data
+    try {
+        const response = await axios.get(`/filteredList/${choice1}/${choice2}`)
+        console.log(response.data, "UTILITIES")
+        return response.data
+    } catch (error) {
+        console.error(error, "Failed to get filtered list")
+    }
+    
 }
 
 // Delete
